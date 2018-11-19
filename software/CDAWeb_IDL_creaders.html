@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Living With a Star and Heliophsyics Data Environment</title>
+
+<meta http-equiv="Content-Type" content="text/htmlcharset=windows-1252">
+<meta content="672" name="orgcode">
+<meta content="Dana.A.Roberts.1" name="rno">
+<meta content="MSHTML 6.00.2800.1276" name="GENERATOR">
+<meta name="webmaster" content="Tamara.J.Kovalik">
+<meta name="content-owner" content="Dana.A.Roberts.1">
+<meta name="description" content="NASA's Heliophysics Data Environment seeks to facilitate Space and Solar Physics community access to the broad range of data products needed to resolve the issues concerning the many influences of the Sun on human activities">
+</head>
+<body>
+<header></header><img alt="NASA logo" src="NASAlogo.gif" align="left" width="75"><font size="+1"> <br>
+Goddard Space Flight Center</font><br>
+<br>
+<br>
+<table border="0">
+<tbody>
+<tr>
+<td><strong><img alt="Sun and Earth picture" src="g78_small.gif"></strong></td>
+<td><font size="5"> NASA's Heliophysics Data Environment: <br>
+"Creaders" for accessing CDAWeb Directly from IDL</font> </td>
+</tr>
+</tbody>
+</table>
+<p>
+<p>
+Return to <a href="CDAWeb_to_IDL.html">CDAWeb to IDL</a> or <a href="../index.html">HPDE Home</a>
+<p>
+The "creaders" below are IDL programs to be used with the routine "cdaweb_get_bin" to bring data directly into IDL from CDAWeb.  They may be used independently or as part of larger IDL codes.  We will make continual additions to this list, and anyone with creaders they find useful is welcome to <a href="mailto:d.aaron.roberts@nasa.gov?subject=creader contribution">contribute to the list.</a>
+<p>
+
+
+
+
+<h3>Data from the Inner Heliosphere</h3>
+<ul>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_helios1_mag_6sec.pro" >cread_helios1_mag_6sec.pro</A>; Loads 6s binned Helios 1 magnetometer data.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_helios2_mag_6sec.pro" >cread_helios2_mag_6sec.pro</A>; Loads 6s binned Helios 2 magnetometer data.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_helios1_40s.pro" >cread_helios1_40s.pro</A>; Loads 40 s  binned Helios 1 solar wind and vector magnetometer data.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_helios2_40s.pro" >cread_helios2_40s.pro</A>; Loads 40 s  binned Helios 2 solar wind and vector magnetometer data.</li>
+</ul>
+<h3>Data from the remote Heliosphere near 1 Au</h3>
+<ul>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_stereo_swimf.pro" >cread_stereo_swimf.pro</A>; Loads 1 hr binned STEREO A&B vector magnetic field, proton density, temperature, velocity, and position in HGI.</li>
+</ul>
+<h3>Data at or near L1</h3>
+<ul>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_ace_1hr.pro" >cread_ace_1hr.pro</A>; Load 1 hr binned ACE vector magnetic field, proton density, temperature, velocity, He++/H+ ratio,  various isotope ratios.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_ace_64s.pro" >cread_ace_64s.pro</A>; Loads 64 sec binned ACE vector magnetic field, proton density, temperature, velocity, He++/H+ ratio.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_wind_3s.pro" >cread_wind_3s.pro</A>; Loads 3 sec binned WIND vector magnetic field, proton density, temperature, velocity, and  He++ density, temperature, velocity.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_wind_92s.pro" >cread_wind_92s.pro</A>; Loads 3 sec binned WIND vector magnetic field, proton density, temperature, velocity, and  He++ density, temperature, velocity.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_wind_mfi_hires.pro" >cread_wind_mfi_hires.pro</A>; Loads 1s binned WIND magnetometer data.  Note the cdf time resolution of the magnetometer data is ~0.1 sec.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_wind_mfi_overview_hires.pro" >cread_wind_mfi_overview_hires.pro</A>; Loads 1s binned WIND magnetometer data and generates an overview plot. Note the Cotoye's IDL library must be installed (http://www.idlcoyote.com/code_tips/installcoyote.php).</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_wind_overview_3s.pro" >cread_wind_overview_3s.pro</A>; Loads 10 sec binned WIND vector magnetic field, proton density, temperature, velocity, and  He++ density, temperature, velocity and generates an overview plot. Note the Cotoye's IDL library must be installed (http://www.idlcoyote.com/code_tips/installcoyote.php)</li>
+</ul>
+<h3>Data from the Outer Heliosphere</h3>
+<ul>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_uly_mag_1sec.pro" >cread_uly_mag_1sec.pro</A>; Loads 1s binned ULYSSES magnetometer data and 1 hour resolution Heliocentric position ephemeris.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_uly_plasmag_8min.pro" >cread_uly_plasmag_8min.pro</A>; Load 480s binned  ULYSSES magnetometer and solar wind density and velocity data.  Note the cdf time resolution of the magnetometer data is ~60 sec, and the plasma data is ~240 sec.</li>
+</ul>
+<h3>Data from the Magnetosphere</h3>
+<ul>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_polar_3sets.pro" >cread_polar_3sets.pro</A>; Loads 120s binned POLAR  TIMAS H+, O+ energy spectra, for 3 pitch angle bins, PWI Plasma wave electric and magnetic field dynamic spectra, vector magnetic field measurements.  Note the cdf time resolution of the magnetometer, ion spectra, and plasma wave datasets are ~ 55 s,  ~12 s, and ~300 respectively.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_isee1_mag_4sec.pro" >cread_isee1_mag_4sec.pro</A>; Loads both ISEE1 4sec (Note: coordinates are very close to GSE in the 4s dataset) and 60 s datasets in GSE, if iplot=1 in code a plot is created that overlays the 60s and 4s data.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_rbsp_efw_mag.pro" >cread_rbsp_efw_mag.pro</A>; Load RBSP hi resolution EFW electric field data (32 samples/s) X & Y in MGSE coordinates, and load hi resolution magnetometer data (64 samples/s) in GSE coordinates. Place measurements in common uniformly spaced time bins.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_themis_mag.pro" >cread_themis_mag.pro</A>; Loads spin resolution magnetometer data from all THEMIS spacecraft in GSE along with position, if iplot =1 the mag data from all spacecraft are plotted red-Bxgse, green-Bygse, blue-Bzgse, black-magniutde</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_cluster_spin_res_mag.pro" >cread_cluster_spin_res_mag.pro</A>; Loads spin resolution magnetometer data from all CLUSTER spacecraft in GSE along with position, if iplot =1 the field from all spacecraft are plotted red-Bxgse, green-Bygse, blue-Bzgse, black-magniutde</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_polar_3sets.pro" >cread_polar_3sets.pro</A>; This combines the low time resolution dynamic spectra from the PWI receivers with 120s binned POLAR  TIMAS H+, O+ energy spectra, for 3 pitch angle bins, PWI Plasma wave electric and magnetic field dynamic spectra, vector magnetic field measurements.  Note the cdf time resolution of the magnetometer and ion spectra datasets are ~ 55 s,  ~24 s respectively.  The cdf time resolution of the four PWI receivers ares  33 s, 16.5 s, 6.0 s, and 2.35 s respectively.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_polar_pwi_hires.pro" >cread_polar_pwi_hires.pro</A>; This combines the hi-resolution dynamic spectra from the 4 PWI receivers with different cadences, into one dynamic spectra with one time cadence. Loads 120s binned POLAR  TIMAS H+, O+ energy spectra, for 3 pitch angle bins, PWI Plasma wave electric and magnetic field dynamic spectra, vector magnetic field measurements.  Note the cdf time resolution of the magnetometer and ion spectra datasets are ~ 55 s,  ~24 s respectively.  The cdf time resolution of the four PWI receivers ares  33 s, 16.5 s, 6.0 s, and 2.35 s respectively.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_rbsp_efw_mag.pro" >cread_rbsp_efw_mag.pro</A>; Load RBSP hi resolution EFW electric field data (32 samples/s) X & Y in MGSE coordinates, and load hi resolution magnetometer data (64 samples/s) in GSE coordinates. Place measurements in common uniformly spaced time bins, if iplot =1 a time series of all 5 measurements are plotted.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_examples/cread_rbsp_emfisis_hope.pro" >cread_rbsp_emfisis_hope.pro</A>; Loads 120s binned RBSP A or B  HOPE H+,He+, O+ and electron energy spectra 72 bins, for 11 pitch angle bins, PWI Plasma wave electric and magnetic field dynamic spectra, vector magnetic field measurements.  Note the cdf time resolution of the magnetometer, ion spectra, and plasma wave datasets are ~ 4 s,  ~24 s, and ~6 respectively.</li>
+</ul>
+<h3>DEMOS</h3>
+<ul>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_ace_2sets.pro" >demo_ace_2sets.pro</A>; Plots 1 hr binned ACE vector magnetic field, proton density, temperature, velocity, He++/H+ ratio,  various isotope ratios.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_polar_3_hires_sets.pro" >demo_polar_3_hires_sets.pro</A>; Plots 60s binned POLAR spacecraft TIMAS H+, PWI Plasma wave (up to 2.4 s res.) electric dynamic spectra, vector magnetic field measurements with IGRF field subtracted.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_polar_3sets.pro" >demo_polar_3sets.pro</A>; Plots 120s binned POLAR spacecraft TIMAS H+, PWI Plasma wave (5 minute res.) electric dynamic spectra, vector magnetic field measurements with IGRF field subtracted.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_of_autobad_with_Ulysses_Swoops.pro" >demo_of_autobad_with_Ulysses_Swoops.pro</A>; Example of using the autobad spike filter using Ulysses Swoops data.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_omni5min.pro" >demo_omni5min.pro</A>; 5 minute binned OMNI solar wind speed, proton density, IMF Bz, SYM-H, ASYM-A, and AE are plotted.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_omni.pro" >demo_omni.pro</A>; 1 hour binned OMNI solar wind speed, proton density, IMF Bz,Kp, Dst, and AE are plotted.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_rbsp.pro" >demo_rbsp.pro</A>; Plots 60s binned RBSP A or B EMFISIS electric field power spectral density, HOPE proton, O+, and electron omni directional differential flux, this is an interactive demo where the user can select a point on the time series plot with their cursor, and electric field and particle spectra, and pitch angle phase space density plots are plotted at the selected time.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_stereoab_omni_swimf.pro" >demo_stereoab_omni_swimf.pro</A>; Plots overlaid 1 hr binned Stere A (red) & B (blue) and Omni (black) data, proton density, proton speed, IMF radial components, and IMF magnitude.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_isee1_mag_4sec.pro" >demo_isee1_mag_4sec.pro</A>; Loads both ISEE1 4sec (Note: coordinates are very close to GSE in the 4s dataset) and 60 s datasets in GSE, if iplot=1 in code a plot is created that overlays the 60s and 4s data.</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_cluster_spin_res_mag.pro" >demo_cluster_spin_res_mag.pro</A>; Loads spin resolution magnetometer data from all CLUSTER spacecraft in GSE along with position, if iplot =1 the field from all spacecraft are plotted red-Bxgse, green-Bygse, blue-Bzgse, black-magniutde</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/demo_themis_mag.pro" >demo_themis_mag.pro</A>; Loads spin resolution magnetometer data from all THEMIS spacecraft in GSE along with position, if iplot =1 the mag data from all spacecraft are plotted red-Bxgse, green-Bygse, blue-Bzgse, black-magniutde</li>
+<li><A HREF="https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/cdaweb_get_bin/creader_demos/tdas_ace_2sets.pro" >tdas_ace_2sets.pro</A>; Examples where the data is loaded into TDAS. Note the TDAS software package (http://themis.ssl.berkeley.edu/software.shtml) must be installed.'</li>
+</ul>
+<p>
+<hr>
+Responsible NASA official: <a href="DAR_Web_Page.html">Dr.
+Aaron Roberts </a> <br>
+E-mail: <a href="mailto:aaron.roberts@nasa.gov">aaron.roberts@nasa.gov</a>
+<br>
+<br>
+Webmaster: Tami Kovalick<br>
+E-mail: <a href="mailto:tamara.j.kovalick@nasa.gov">tamara.j.kovalick@nasa.gov</a>
+<br>Last revised 20 February 2015<br>
+<h5 style="text-align: left;" align="left"><span style="font-size: 10pt;"><a href="https://www.nasa.gov/about/highlights/HP_Privacy.html">
+<span style="">Privacy Policy and Important Notices</span></a></span></h5>
+</body></html>

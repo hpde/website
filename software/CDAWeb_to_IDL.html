@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Living With a Star and Heliophsyics Data Environment</title>
+
+<meta http-equiv="Content-Type" content="text/htmlcharset=windows-1252">
+<meta content="672" name="orgcode">
+<meta content="Dana.A.Roberts.1" name="rno">
+<meta content="MSHTML 6.00.2800.1276" name="GENERATOR">
+<meta name="webmaster" content="Tamara.J.Kovalik">
+<meta name="content-owner" content="Dana.A.Roberts.1">
+<meta name="description" content="NASA's Heliophysics Data Environment seeks to facilitate Space and Solar Physics community access to the broad range of data products needed to resolve the issues concerning the many influences of the Sun on human activities">
+</head>
+<body>
+<header></header><img alt="NASA logo" src="NASAlogo.gif" align="left" width="75"><font size="+1"> <br>
+Goddard Space Flight Center</font><br>
+<br>
+<br>
+<table border="0">
+<tbody>
+<tr>
+<td><strong><img alt="Sun and Earth picture" src="g78_small.gif"></strong></td>
+<td><font size="5"> NASA's Heliophysics Data Environment: <br>
+Accessing CDAWeb Directly from IDL</font> </td>
+</tr>
+</tbody>
+</table>
+<p>
+Return to <a href="hpde_software_tools.html">Software Tools</a> or <a href="../index.html">HPDE Home</a>
+<p>
+<form method="get" action="cdaweb_get_bin.sav">
+<button type="submit">Download creader software</button>
+</form>
+<form method="get" action="creader_examples.zip">
+<button type="submit">Download creader examples</button>
+</form>
+<form method="get" action="creader_demos.zip">
+<button type="submit">Download creader demos</button>
+</form>
+<p>
+<h3>Loading data from CDAWeb into IDL 7.1+ with specified variables and cadence</h3>
+
+A set of "creader" routines is available to read CDAWeb data directly into IDL.  (The "c" is for both "combine" and "CDAWeb.") In the process, the user can assign variable names, bin the data to a uniform time cadence, fill data gaps by linear interpolation, and remove spikes from the input time series.  There is no need to download or read individual CDF files.  The places where &lt;variable_name&gt; bins are interpolated can be found by checking where the variable &lt;variable_name&gt;_nbins is zero, and thus these points can eliminated from an analysis procedure using the IDL "where" function.  The central procedure is "cdaweb_get_bin" and the calling sequence is shown below.  Note that versions of IDL prior to 7.1 will not work with these routines, and 8.2.1+ is highly recommended. Some of the most recent CDF files use a time format not understood by the older IDL versions, although a <a target='new' href='https://cdf.gsfc.nasa.gov/html/cdf_patch_for_idl.html'>patch is available</a> to fix this. 
+<p>
+Note that the time is returned as the double-precision "Julian Day" which is what is used by IDL for plotting, and thus is very convenient.  The usual year, day, etc. are easily generated with the IDL CALDAT procedure (CALDAT, j_day, mo, day, yr, hr, min, sec).  Also useful is a routine to convert "ISO 8601" date-times, used here for start and stop times, to both standard time (year, month, etc.) and Julian Day (cmb_isodate2cdate, available if you "restore" the cdaweb_get_bin.sav file).  
+<p>
+<b> ** To use this capability</b>, just download the <a href='cdaweb_get_bin.sav'>save file with all the required code<a> as well as the <a href='creader_demos.zip'>zip file of demos</a>. Unzip the demos, put everything in a location in your IDL path, and start up IDL (it helps with path troubles to start fresh). Type at the prompt (you do not need to restore the .sav file for this): 
+<p>
+> .r demo_ace_2sets
+<p>
+Within a short time you should see a plot of time series from two ACE instruments (MAG and SWEPAM). The IDL session reports the variables that are produced along with other information. A second demo, demo_polar_3sets, shows how more complex data can be read in and plotted.  You may want to try and to examine the various other demo files as well.  These files can, of course, be modified and used for other purposes.  Note that the routines have unusual prefixes such as "cread" or "cmb" ("combine") that will help to avoid conflicts with other routines. 
+<p>
+There is a separate page with a listing of <a target='new' href = 'CDAWeb_IDL_creaders.html'>creaders </a> provides some useful cases, often with multiple datasets.  A set of nearly all the individual creaders, identified by the CDAWeb ID, can be dowloaded as a <a href='creaders.zip'>zip file</a>.  If you want the source code for cdaweb_get_bin and any of the routines it uses, the programs can be retrieved along with demos and example files by downloading <a href='creader_distribution.zip'>a zip file containing all the routines</a>.   
+<p> 
+A simple example will illustrate how the structure of a creader file. The following IDL code will load 3-second mag and plasma data from the MFI and 3DP instruments on the Wind spacecraft averaged to 10 second bins:
+<p>
+<pre>
+timename='jul_day'    ;name of time variable -- Julian days 
+start_time = '1998-06-10T00:00:00.0Z'  ;start time 
+stop_time  = '1998-06-10T23:59:59.0Z'  ;stop time 
+dt_sec=10.0 ;sec -- bin size in seconds 
+
+dataset_id='WI_H0_MFI'    ; CDAWeb dataset ID
+vars=[ 'B3F1=Bmag3', 'B3GSE=Bx3,By3,Bz3']   ; CDAWeb variable names with locally assigned names
+cdaweb_get_bin,dataset_id,vars,start_time, stop_time,dt_sec,time_name=timename 
+
+dataset_id='WI_PM_3DP' 
+vars=[ 'P_DENS=np3', 'P_VELS=Vxp3,Vyp3,Vzp3',  'P_TEMP=Tp3', 'A_DENS=na3', 'A_VELS=Vxa3,Vya3,Vza3', 'A_TEMP=Ta3'] 
+cdaweb_get_bin,dataset_id,vars,start_time,  stop_time,dt_sec,time_name=timename,/autobad,sigmul=5.0
+
+end 
+</pre>
+<p>
+The result of this procedure is field and plasma data with the data in common 10-sec bins so the variables can be compared directly (cross-correlations, etc.).  The CDF variable names such as P_DENS are replaced by the name chosen--here, np3--and vectors may be assigned to components as in the 'BGSE=Bx3,By3,Bz3' where the optional names after the "=" sign are user chosen. In this case, the "3" (indicating the underlying data were at 3-sed resolution, which could have been used for dt) was included to distinguish the variables from other instances of Bx that might have been loaded, say, at lower resolution.  The result also provides a variable containing the number of points per bin (e.g., np3_nbin) that allows the user to use only non-fill points using the "where" function: good_indices = where(np3_nbin ne 0).
+<p>
+Choosing dt = 0 will skip the binning and interpolation steps, providing the user with the data as it is in the original files with fill flags intact.  
+<p>
+The "/autobad" flag despikes the 3DP data, and this is optional.  Try it with and without this flag, and see the change. Using, e.g., sigmul=6.0 will only take large spikes, and smaller sigmuls will eliminate smaller ones, with more likelihood of occasional false detections; the default is sigmul = 5.  This is documented in <a target='new' href = 'CleanAlgorithm.pdf'>this paper</a>; the IDL routine cmb_autobad.pro in the distribution implements the same algorithm, but works slightly better than the FORTRAN in the text. 
+<p>
+There are a few of ways of finding the right dataset_id's and variable names.  The first place to check is in the "creaders" folder where new entries will be added continually. Second, you may download a list of all the CDAWeb dataset and variable names in a file called <a target = 'new' href = 'https://cdaweb.gsfc.nasa.gov/pub/software/cdaweb_idl_clients/cdaweb_get_bin/List_of_valid_CDAWEB_dataset_IDs_and_variable_names.txt'> "List_of_valid_CDAWEB_dataset_IDs_and_variable_names.txt"</a> that includes this information for all the products in the database in the form needed.  Most of the parameters are fairly self-explanatory, and there is a short description of the dataset to aid utility.  A third method is to use the <a target='new' href='https://heliophysicsdata.gsfc.nasa.gov'>Heliophysics Data Portal</a> to search for datasets of interest and then to click on "get data/plots" for CDAWeb resident data.  The dataset_id is then included in the header (use the "CDAS Product ID") and the listed variables give the required names in the left column with descriptions on the right.  
+<p>
+Further information is included in the header of cdaweb_get_bin.pro in the "src" subfolder of the distribution:
+<pre>
+; PURPOSE:   
+; This procedure retrieves data remotely from the SPDF/CDAWeb and
+; creates uniformly spaced binned data for the specified variables and data set.
+; Bins containing no data are interpolated using nearest neighbor bins that contain data.
+; It then creates these variables and their metadata on the top level of your current IDL session.
+;
+; CATEGORY:
+; Remote data retrieval and binning.
+;
+; CALLING SEQUENCE:                                   
+; cdaweb_get_bin,dataset_id,vars, t_init, t_final,dt_sec,time_name=time_name, autobad=autobad, sigmul=sigmul, tdas=tdas                      
+;                                                     
+; INPUTS:                                             
+;   dataset_id: cdf dataset id   i.e. dataset_id = 'AC_H3_MFI'
+;       Note: the dataset_id and cdf variable names can be determined at https://heliophysicsdata.gsfc.nasa.gov/.
+;   vars: list of cdf variable names,  i.e. vars = ['Magnitude', 'BRTN']
+;       Note: cdf variable names are case sensitive.
+;       The default output variable name is the cdf variable name.
+;       To rename output variables and/or break them into components use following syntax:
+;       vars =['cdfvariablename1=var','cdfvariablename2=var1,var2,var3']
+;       the later breaks 'cdfvariablename2' into components named 'var1','var2','var3',
+;       Note: the number of specified output components must equal the number of components for that cdf variabe.
+;       For example vars = ['Magnitude=B0', 'BRTN=Bvec'],
+;       would create output variables named 'B0' and 'BVEC'.
+;       For example vars = ['Magnitude=B0', 'BRTN=Bx,By,Bz'],
+;       would create output variables named 'B0' and 'Bx','By','Bz' (components) instead of 'Magnitude' and 'BRTN' (vector).
+;   t_init:  start time in isodate format, i.e.  t_init ='2007-01-10T02:00:00.0Z'
+;   t_final: stop time in isodate format, i.e.   t_final='2007-01-10T23:59:59.0Z'
+;   dt_sec: time interval in seconds of the time bin width.
+;
+; Keyword Inputs:                                                      
+;   time_name: name of output time variable, default is 'TIMEJD'.
+;   autobad - if set data will be filtered for bad data points: data where |data - running mean| > sigmul*standard_deviation 
+;            will be flagged as bad and not used.
+;   sigmul - used only if autobad keyword is set: multiplicative factor of standard devidation for rejection of data: 5 (default),  4 (more agressive), 6 (less agressive). 
+;   tdas  - if set the variables are moved into TDAS, not written to the top level.
+;
+; OUTPUTS:
+;   variables: binned data whose name is specified by input variable 'vars'.
+;   variable_NBIN; number of data points in a given bin.
+;   time_name: center time in Julian Days of each data bin.
+;   Note: these variables will be created on the top level of your current IDL session.
+</pre>
+
+<p>
+<hr>
+Responsible NASA official: <a href="DAR_Web_Page.html">Dr.
+Aaron Roberts </a> <br>
+E-mail: <a href="mailto:aaron.roberts@nasa.gov">aaron.roberts@nasa.gov</a>
+<br>
+<br>
+Webmaster: Tami Kovalick<br>
+E-mail: <a href="mailto:tamara.j.kovalick@nasa.gov">tamara.j.kovalick@nasa.gov</a>
+<br>Last revised 27 January 2017<br>
+<h5 style="text-align: left;" align="left"><span style="font-size: 10pt;"><a href="https://www.nasa.gov/about/highlights/HP_Privacy.html">
+<span style="">Privacy Policy and Important Notices</span></a></span></h5>
+</body></html>

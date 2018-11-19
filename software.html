@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HPDE - Software</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/fontawesome/css/all.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="body">
+
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="#body" class="scrollto"><img alt="" src="img/logo-40.png"/> HPDE</a></h1>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="data-access.html">Data</a></li>
+          <li class="menu-active"><a href="software.html">Software</a></li>
+          <li><a href="projects.html">HDMC</a></li>
+          <li><a href="metadata.html">SPASE</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+  <main id="main">
+
+    <!--==========================
+      Section
+    ============================-->
+    <section>
+      <div class="container">
+        <div class="header bar">
+          <h2>Software</h2>
+		  <h3>Formats, Tools and Services</h3>
+		</div>
+		<div style="content">
+			<p>
+The National Academy of Sciences <a target="_blank" href = "doc/Decadal_Survey_HPDE_Recommendations.html"> Decadal Survey for Heliophysics</a> strongly recommendeds that we should follow the lead of other NASA disciplines in providing software tools of general utility that will facilitate the use of HP data.  This page is a work-in-progress aimed at meeting this recommendation.  Both Solar Physics and Astronomy have IDL libraries that have proven very useful; the initial set of tools here are in that spirit and include pointers to those libraries.  
+
+			</p>
+        </div>
+
+		<div class="header icon">
+			<i class="fas fa-boxes"></i>
+			<h2>Formats</h2>
+			<h3>Standard Formats</h3>
+		</div>
+		<div class="content">
+<p>There is great utility in using standard formats for data, and HP has finally come to fairly general agreement on FITS (Solar Data), CDF (Space Physics data), and NetCDF (some ITM data).  HDF may eventually be used by HP, but its use is not yet common. Below are some pointers to how to use FITS and CDF formats; NetCDF documentation is in preparation.  Note that without the proper tools these formats seem difficult, but they allow the development of powerful tools of broad applicability.  Most people find it hard to go back to ASCII once they have learned to use some of these applications.  
+</p>
+
+<h4>FITS (Solar Data) <a class="pad-left" target="_blank" href="https://fits.gsfc.nasa.gov"><i class="fas fa-external-link-alt"></i></a></h4>
+<p>
+The Flexible Image Transport System (FITS) now provides the standard data format used in Astronomy, and thus they maintain the software. The Solar Physics community has adopted this format as well, which enables them to take advantage of all the Astronomical efforts. The <a target="_blank" href="https://fits.gsfc.nasa.gov"> primary FITS site</a> provides a wide variety of support.  Particularly useful are <a target="_blank" href="https://fits.gsfc.nasa.gov/fits_viewer.html">FITS image viewers</a>.   One widely used viewer, available on all platforms, is <a target = "_blank" href="http://hea-www.harvard.edu/RD/ds9/site/Home.html">SAO Image DS9</a>.  Many general IDL routines are available from the <a target="_blank" href="https://idlastro.gsfc.nasa.gov/contents.html"> IDL Astronomy User's Library</a>; the routine mrdfits.pro provides a useful way to load FITS files into IDL for analysis (be sure to get the "Other ASTRON" routines required also as indicated in the file).  For serious analysis of many solar datasets, a widely used (in some cases practically required) set of IDL routines is provided by <a target="_blank" href="http://www.lmsal.com/solarsoft/">SolarSoft</a>.  Although it requires some work by the user to get going, this package provides a very rich set of reading (often direct from the Web) and analysis routines, and it is continually updated by the solar community. 
+</p>
+
+<h4>CDF (mostly Space Physics) <a class="pad-left" target="_blank" href="https://cdaweb.gsfc.nasa.gov"><i class="fas fa-external-link-alt"></i></a></h4>
+<p>
+Judging by recent mission efforts, the NASA Space Physics community has adopted the ISTP Common Data Format (ISTP CDF) as its standard for public data access.  It is the format used by the primary access route to the Final Archive at the Space Physics Data Facility (<a target="_blank" href="https://cdaweb.gsfc.nasa.gov">CDAWeb</a>), which contains much of the data from current and past Space Physics missions.  The SPDF developed and maintains CDF, and works with providers to assure new data products are accommodated.   CDF files are available from various missions (e.g., Cluster) as well as from SPDF, either through simple http or ftp transfer, through CDAWeb, or through Web Services.  Any CDF files that are in CDAWeb already can be plotted, downloaded, and converted to ASCII with the CDAWeb interface (//cdaweb.gsfc.nasa.gov).  This is often a good place to start; in addition to previews of a given dataset, many sets can be combined into one displayed graph, thus allowing quick qualitative correlative analysis. 
+</p>
+</div>
+		<div class="header icon">
+			<i class="fas fa-wrench"></i>
+			<h2>Tools</h2>
+			<h3>Analysis and visualization</h3>
+		</div>
+		<div class="content">
+
+<h4>Autoplot <a class="pad-left" target="_blank" href="http://autoplot.org"><i class="fas fa-external-link-alt"></i></a></h4>
+<p>
+Making graphs of individual CDF files, whether on your machine or on the web, is easy: use the open source application <a target="_blank" href="http://autoplot.org">Autoplot</a>. You can download a file (in many formats), launch the application from the internet or locally (once downloaded), and open the file, specifying a local or remote address.  A folder icon at the right of the header bar allows the user to pick variables to plot either on one set of axes or on multiple panels.  Files may be referenced directly from the internet.  Autoplot has many other capabilities, including making sets of png overview files and combining plots from multiple instruments and missions; see the <a target="_blank" href="http://autoplot.org">Autoplot Website</a> for details.  
+</p>
+
+<h5>IDL <a class="pad-left" target="_blank" href="http://www.exelisvis.com/ProductsServices/IDL.aspx"><i class="fas fa-external-link-alt"></i></a> </h5> 
+<p>
+The "IDL" commercial data analysis application contains a <a target="_blank" href="http://www.exelisvis.com/docs/CDF_Overview.html">number of routines to read and make CDF files</a>.  SPDF also has a number of additional routines that are not distributed with the standard IDL releases.  The easiest way to get these is to download the <a target="_blank" href="https://cdaweb.gsfc.nasa.gov/WebServices/REST/CdasIdlLibrary.html">whole library as a "saveset" called spdfcdas.sav</a>.  This can then be brought into IDL with the command:
+</p>
+<p>
+<code>
+> restore, '/your_IDL_command_path/spdfcdas.sav'
+</code>
+<p>
+Some of the routines available at that point are documented <a target="_blank" href="https://spdf.gsfc.nasa.gov/CDAWlib.html">here</a>, one of the most useful being "<b>read_mycdf</b>" that will bring an entire CDF file from a local disk into IDL as a "structure."  The equivalent command to bring CDAWeb data directly from the Web into IDL is "<b>spdfgetdata</b>."
+</p>
+</div>
+		<div class="header icon">
+			<i class="fas fa-server"></i>
+			<h2>Service</h2>
+			<h3>Data ccess</h3>
+		</div>
+		<div class="content">
+<h4>HAPI <a class="pad-left" target="_blank" href="https://github.com/hapi-server"><i class="fas fa-external-link-alt"></i></a></h4>
+<p>
+The Heliophysics Application Programmer's Interface (HAPI) data access specification is a RESTful API and streaming format specification for delivering digital time series data. The HAPI specification describes a minimum set of capabilities needed for a server to allow access to the time series data values within one or more data collections.</p>
+
+<h4><a href='software/CDAWeb_to_IDL.html'>CDAWeb</a></h4>
+<p>
+IDL CDF tools can be used to read CDAWeb data varibles over the Internet directly into IDL. The variables can be renamed, despiked, rebinned, and interpolated in one command. To use this capability, just download the <a href="software/cdaweb_get_bin.sav">save file with all the required code<a> as well as the <a href="software/creader_demos.zip">zip file of demos</a>. Unzip the demos, put everything in a location in your IDL path, and start up IDL (it helps with path troubles to start fresh). Type at the prompt: 
+</p>
+<p>
+<code>
+> .r demo_ace_2sets
+</code>
+<p>
+Within a short time you should see a plot of four time series from three ACE instruments (MAG, SWEPAM, and SWICS). The IDL session reports the variables that are produced along with other information. A second demo, demo_polar_3sets, shows how more complex data can be read in and plotted.  The demo files can be modified, and there is a separate page with a listing of <a target='new' href = 'software/CDAWeb_IDL_creaders.html'>creaders</a> that provides some potentially useful cases.  A set of nearly all the individual creaders, identified by the CDAWeb ID, can be dowloaded as a <a href='software/creaders.zip'>zip file</a>.  <b>More details about this access to CDAWeb CDF data, including how to write your own creaders, can be found <a target="_blank" href="software/CDAWeb_to_IDL.html">here</a>.</b>  Note that versions of IDL prior to 7.1 will not work with these routines, and 8.2.1+ is highly recommended. Some of the most recent CDF files use a time format not understood by the older IDL versions, although a <a target="_blank" href="https://cdf.gsfc.nasa.gov/html/cdf_patch_for_idl.html">patch is available</a> to fix this. Please <a href="mailto:aaron.roberts@nasa.gov">report any bugs</a>.  If you wish source code, the programs can be retrieved along with demos and example files by downloading <a href="software/creader_distribution.zip">a zip file containing all the routines</a>.  This includes the required subset of the above CDAWeb IDL library of routines.   
+</p>
+<h5>IDL Routines of Note</h5>
+<p>
+Various sets of IDL routines are of potentially great general interest to IDL users of Heliophysics data.  The first is David Fanning's "<a target="_blank" href="//www.idlcoyote.com/documents/programs.php#COYOTE_LIBRARY_DOWNLOAD">Coyote Library</a>" of routines that make IDL do what you often hoped it would, such as making the default for graphics be black lines on white and allowing a line color choice by simply stating "color = 'red'."  Fanning provides a wonderful array of routines that make life easier.
+</p>
+<p>
+Another set of free IDL routines that can be helpful are provided by the <a target="_blank" href="//idlastro.gsfc.nasa.gov/contents.html">Astronomy IDL library</a> mentioned above.  For example, "multiplot.pro" provides a simple way of making multipanel plots with easily controllable space between plots, and many options for labels and other features.  
+</p>
+<p>
+There is a set of routines that has been developed in conjunction with a number of missions (Cluster, Wind, Polar, FAST, and THEMIS) called the <a target="_blank" href="http://spedas.org/wiki/index.php?title=Main_Page">Space Physics Environment Data Analysis Software (SPEDAS)</a>. It is useful for much more than just the original target datasets, and it now provides access to much of CDAWeb.    The basic procedure is to download the set of routines to a place in your path, and then use commands from the set to load and process variables and make plots with both command line and gui input. The main web page points to many videos, a User Manual, and very helpful "crib sheets."  The routines include a capable plotting GUI and the abilitiy to make such things as power spectra of time series and cuts of particle distribution functions.  This Suite is becoming more poplular, and is in use by many groups such as some of the Van Allen Probes teams.  The creader routines mentioned above can be used to read CDAWeb variables into SPEDAS using the "/tdas" (an older name for the software) flag.  
+</p>
+		</div>
+      </div>
+    </section>
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright 2018 <strong>HPDE</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        DISCLAIMER<br/>
+		The HPDE provides information about available software, services and events and does not endorse any specific items.
+	  </div>
+     <div class="credits">
+        <a href="privacy.html">Privacy Statement</a>
+	 </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/superfish/hoverIntent.js"></script>
+  <script src="lib/superfish/superfish.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/magnific-popup/magnific-popup.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>  <!-- animations -->
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script> <!-- animations -->
+  <script src="lib/sticky/sticky.js"></script> <!-- Top menu sticks -->
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
